@@ -1,7 +1,8 @@
-package app.model;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.model;
 
-import app.algorithms.SortAlgorithm;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms.SortAlgorithm;
 
+@Deprecated
 public class Test {
 
     private String algorithm;
