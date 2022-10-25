@@ -1,14 +1,19 @@
-package app.model;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.model;
 
 import java.util.Comparator;
 
+@SuppressWarnings("rawtypes")
 public enum SortOrder {
     ASCENDING(Comparator.naturalOrder()),
     DESCENDING(Comparator.reverseOrder());
 
-    public final Comparator comparator;
+    private final Comparator comparator;
 
     SortOrder(Comparator<?> comparator) {
         this.comparator = comparator;
+    }
+
+    public Comparator getComparator() {
+        return comparator;
     }
 }
