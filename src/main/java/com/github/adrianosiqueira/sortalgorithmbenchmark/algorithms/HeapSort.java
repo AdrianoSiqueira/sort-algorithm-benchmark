@@ -1,10 +1,24 @@
-package app.algorithms;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms;
 
 import java.util.Comparator;
 
-public class HeapSort<T> implements SortAlgorithm<T> {
+public class HeapSort<T> extends SortAlgorithm<T> {
 
     private Comparator<T> comparator;
+
+    @Override
+    public void sort(T[] array, Comparator<T> comparator) {
+        this.comparator = comparator;
+
+        for (int i = array.length / 2 - 1; i >= 0; i--) {
+            heapify(array, array.length, i);
+        }
+
+        for (int i = array.length - 1; i > 0; i--) {
+            swap(array, 0, i);
+            heapify(array, i, 0);
+        }
+    }
 
     private void heapify(T[] array, int size, int rootIndex) {
         int largestIndex = rootIndex;
@@ -23,23 +37,5 @@ public class HeapSort<T> implements SortAlgorithm<T> {
             swap(array, rootIndex, largestIndex);
             heapify(array, size, largestIndex);
         }
-    }
-
-    @Override
-    public long sort(T[] array, Comparator<T> comparator) {
-        this.comparator = comparator;
-
-        long start = System.currentTimeMillis();
-
-        for (int i = array.length / 2 - 1; i >= 0; i--) {
-            heapify(array, array.length, i);
-        }
-
-        for (int i = array.length - 1; i > 0; i--) {
-            swap(array, 0, i);
-            heapify(array, i, 0);
-        }
-
-        return System.currentTimeMillis() - start;
     }
 }
