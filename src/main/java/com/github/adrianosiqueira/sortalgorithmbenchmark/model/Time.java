@@ -16,6 +16,26 @@ public class Time {
     }
 
 
+    public long getDay() {
+        return day;
+    }
+
+    public long getHour() {
+        return hour;
+    }
+
+    public long getMillisecond() {
+        return millisecond;
+    }
+
+    public long getMinute() {
+        return minute;
+    }
+
+    public long getSecond() {
+        return second;
+    }
+
     public void setTime(long millisecond) {
         this.second      = millisecond / 1000;
         this.millisecond = millisecond % 1000;
