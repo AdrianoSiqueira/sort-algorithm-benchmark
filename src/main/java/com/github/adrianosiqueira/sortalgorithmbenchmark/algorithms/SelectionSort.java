@@ -1,13 +1,11 @@
-package app.algorithms;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms;
 
 import java.util.Comparator;
 
-public class SelectionSort<T> implements SortAlgorithm<T> {
+public class SelectionSort<T> extends SortAlgorithm<T> {
 
     @Override
-    public long sort(T[] array, Comparator<T> comparator) {
-        long start = System.currentTimeMillis();
-
+    public void sort(T[] array, Comparator<T> comparator) {
         for (int i = 0; i < array.length - 1; i++) {
             int minIndex = i;
 
@@ -19,7 +17,5 @@ public class SelectionSort<T> implements SortAlgorithm<T> {
 
             swap(array, i, minIndex);
         }
-
-        return System.currentTimeMillis() - start;
     }
 }
