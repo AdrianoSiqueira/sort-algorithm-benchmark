@@ -1,13 +1,11 @@
-package app.algorithms;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms;
 
 import java.util.Comparator;
 
-public class CycleSort<T> implements SortAlgorithm<T> {
+public class CycleSort<T> extends SortAlgorithm<T> {
 
     @Override
-    public long sort(T[] array, Comparator<T> comparator) {
-        long start = System.currentTimeMillis();
-
+    public void sort(T[] array, Comparator<T> comparator) {
         for (int cycle_start = 0; cycle_start < array.length - 1; cycle_start++) {
             T   item = array[cycle_start];
             int pos  = cycle_start;
@@ -52,7 +50,5 @@ public class CycleSort<T> implements SortAlgorithm<T> {
                 }
             }
         }
-
-        return System.currentTimeMillis() - start;
     }
 }
