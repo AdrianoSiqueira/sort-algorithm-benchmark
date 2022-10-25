@@ -1,4 +1,4 @@
-package app.model;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.model;
 
 public class Time {
 
@@ -8,9 +8,13 @@ public class Time {
     private long second;
     private long millisecond;
 
+
+    public Time() {}
+
     public Time(long millisecond) {
         setTime(millisecond);
     }
+
 
     public void setTime(long millisecond) {
         this.second      = millisecond / 1000;
