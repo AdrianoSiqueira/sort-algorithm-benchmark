@@ -1,13 +1,11 @@
-package app.algorithms;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms;
 
 import java.util.Comparator;
 
-public class BubbleSort<T> implements SortAlgorithm<T> {
+public class BubbleSort<T> extends SortAlgorithm<T> {
 
     @Override
-    public long sort(T[] array, Comparator<T> comparator) {
-        long start = System.currentTimeMillis();
-
+    public void sort(T[] array, Comparator<T> comparator) {
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 if (comparator.compare(array[i], array[j]) > 0) {
@@ -15,7 +13,5 @@ public class BubbleSort<T> implements SortAlgorithm<T> {
                 }
             }
         }
-
-        return System.currentTimeMillis() - start;
     }
 }
