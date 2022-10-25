@@ -1,13 +1,11 @@
-package app.algorithms;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms;
 
 import java.util.Comparator;
 
-public class InsertionSort<T> implements SortAlgorithm<T> {
+public class InsertionSort<T> extends SortAlgorithm<T> {
 
     @Override
-    public long sort(T[] array, Comparator<T> comparator) {
-        long start = System.currentTimeMillis();
-
+    public void sort(T[] array, Comparator<T> comparator) {
         for (int i = 1; i < array.length; ++i) {
             T   key = array[i];
             int j   = i - 1;
@@ -19,7 +17,5 @@ public class InsertionSort<T> implements SortAlgorithm<T> {
 
             array[j + 1] = key;
         }
-
-        return System.currentTimeMillis() - start;
     }
 }
