@@ -1,18 +1,11 @@
-package app.algorithms;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms;
 
 import java.util.Comparator;
 
-public class CombSort<T> implements SortAlgorithm<T> {
-
-    private int getNextGap(int gap) {
-        gap = (gap * 10) / 13;
-        return Math.max(gap, 1);
-    }
+public class CombSort<T> extends SortAlgorithm<T> {
 
     @Override
-    public long sort(T[] array, Comparator<T> comparator) {
-        long start = System.currentTimeMillis();
-
+    public void sort(T[] array, Comparator<T> comparator) {
         int     gap     = array.length;
         boolean swapped = true;
 
@@ -27,7 +20,10 @@ public class CombSort<T> implements SortAlgorithm<T> {
                 }
             }
         }
+    }
 
-        return System.currentTimeMillis() - start;
+    private int getNextGap(int gap) {
+        gap = (gap * 10) / 13;
+        return Math.max(gap, 1);
     }
 }
