@@ -1,11 +1,18 @@
-package app.algorithms;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms;
 
 import java.util.Comparator;
 
 @SuppressWarnings("unchecked")
-public class MergeSort<T> implements SortAlgorithm<T> {
+public class MergeSort<T> extends SortAlgorithm<T> {
 
     private Comparator<T> comparator;
+
+    @Override
+    public void sort(T[] array, Comparator<T> comparator) {
+        this.comparator = comparator;
+
+        sort(array, 0, array.length - 1);
+    }
 
     private void merge(T[] array, int startIndex, int middleIndex, int endIndex) {
         int sizeLeft  = middleIndex - startIndex + 1;
@@ -55,14 +62,5 @@ public class MergeSort<T> implements SortAlgorithm<T> {
 
             merge(array, startIndex, middleIndex, endIndex);
         }
-    }
-
-    @Override
-    public long sort(T[] array, Comparator<T> comparator) {
-        this.comparator = comparator;
-
-        long start = System.currentTimeMillis();
-        sort(array, 0, array.length - 1);
-        return System.currentTimeMillis() - start;
     }
 }
