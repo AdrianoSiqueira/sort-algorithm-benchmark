@@ -1,13 +1,11 @@
-package app.algorithms;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms;
 
 import java.util.Comparator;
 
-public class ShellSort<T> implements SortAlgorithm<T> {
+public class ShellSort<T> extends SortAlgorithm<T> {
 
     @Override
-    public long sort(T[] array, Comparator<T> comparator) {
-        long start = System.currentTimeMillis();
-
+    public void sort(T[] array, Comparator<T> comparator) {
         for (int gap = array.length / 2; gap > 0; gap /= 2) {
             for (int i = gap; i < array.length; i += 1) {
                 T   temp = array[i];
@@ -20,7 +18,5 @@ public class ShellSort<T> implements SortAlgorithm<T> {
                 array[j] = temp;
             }
         }
-
-        return System.currentTimeMillis() - start;
     }
 }
