@@ -1,13 +1,11 @@
-package app.algorithms;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms;
 
 import java.util.Comparator;
 
-public class CocktailSort<T> implements SortAlgorithm<T> {
+public class CocktailSort<T> extends SortAlgorithm<T> {
 
     @Override
-    public long sort(T[] array, Comparator<T> comparator) {
-        long start = System.currentTimeMillis();
-
+    public void sort(T[] array, Comparator<T> comparator) {
         boolean swapped    = true;
         int     startIndex = 0;
         int     endIndex   = array.length;
@@ -36,7 +34,5 @@ public class CocktailSort<T> implements SortAlgorithm<T> {
                 startIndex = startIndex + 1;
             }
         }
-
-        return System.currentTimeMillis() - start;
     }
 }
