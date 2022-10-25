@@ -1,11 +1,11 @@
 @font-face {
     -fx-font-family : Oswald;
-    src             : url("../../../../../../java/com/github/adrianosiqueira/sortalgorithmbenchmark/font/Oswald-Regular.ttf");
+    src             : url("../font/Oswald-Regular.ttf");
 }
 
 @font-face {
     -fx-font-family : Oswald;
-    src             : url("../../../../../../java/com/github/adrianosiqueira/sortalgorithmbenchmark/font/Oswald-Bold.ttf");
+    src             : url("../font/Oswald-Bold.ttf");
 }
 
 /*
