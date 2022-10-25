@@ -1,6 +1,6 @@
-package app.main;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.main;
 
-import app.control.AppUIController;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.control.AppUIController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+@Deprecated
 public class Main extends Application {
 
     @Override
