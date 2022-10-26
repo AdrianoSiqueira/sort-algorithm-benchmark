@@ -1,24 +1,20 @@
 @font-face {
-    -fx-font-family : Oswald;
-    src             : url("../font/Oswald-Regular.ttf");
+    src : url("../font/Oswald-Regular.ttf");
 }
 
 @font-face {
-    -fx-font-family : Oswald;
-    src             : url("../font/Oswald-Bold.ttf");
+    src : url("../font/Oswald-Bold.ttf");
 }
 
-/*
-Dark colors
-    green: #00d755
-     blue: #00a3d7
-    linear-gradient(to top right, #00d755, #00a3d7)
-
-Light colors
-    green: #00ff64
-     blue: #00c2ff
-    linear-gradient(to top right, #00ff64, #00c2ff)
-*/
+* {
+    FOREGROUND      : #FFFFFF;
+    GRADIENT_DARK   : linear-gradient(to top right, PRIMARY_DARK, SECONDARY_DARK);
+    GRADIENT_LIGHT  : linear-gradient(to top right, PRIMARY_LIGHT, SECONDARY_LIGHT);
+    PRIMARY_DARK    : #00D755;
+    PRIMARY_LIGHT   : #00FF64;
+    SECONDARY_DARK  : #00A3D7;
+    SECONDARY_LIGHT : #00C2FF;
+}
 
 .label {
     -fx-font-family : Oswald;
@@ -26,22 +22,22 @@ Light colors
 }
 
 .menu-button {
-    -fx-background-color : linear-gradient(to top right, #00D755, #00A3D7);
+    -fx-background-color : GRADIENT_DARK;
 }
 
 .menu-button:hover,
 .menu-button:showing {
-    -fx-background-color : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-background-color : GRADIENT_LIGHT;
 }
 
 .menu-button .arrow-button .arrow {
-    -fx-background-color : white;
+    -fx-background-color : FOREGROUND;
 }
 
 .menu-button .context-menu {
     -fx-background-radius : 5px;
 
-    -fx-border-color      : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-border-color      : GRADIENT_LIGHT;
     -fx-border-radius     : 5px;
     -fx-border-width      : 2px;
 }
@@ -49,11 +45,11 @@ Light colors
 .menu-button .label {
     -fx-font-size : 20px;
 
-    -fx-text-fill : #FFFFFF;
+    -fx-text-fill : FOREGROUND;
 }
 
 .menu-button .menu-item:focused {
-    -fx-background-color  : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-background-color  : GRADIENT_LIGHT;
     -fx-background-radius : 5px;
 }
 
@@ -64,11 +60,11 @@ Light colors
 .menu-button .menu-item .label {
     -fx-font-size : 16px;
 
-    -fx-text-fill : linear-gradient(to top right, #00D755, #00A3D7);
+    -fx-text-fill : GRADIENT_DARK;
 }
 
 .menu-button .menu-item:focused .label {
-    -fx-text-fill : #FFFFFF;
+    -fx-text-fill : FOREGROUND;
 }
 
 .progress-bar {
@@ -77,14 +73,14 @@ Light colors
 }
 
 .progress-bar .bar {
-    -fx-background-color  : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-background-color  : GRADIENT_LIGHT;
     -fx-background-radius : 10px;
 }
 
 .progress-bar .track {
     -fx-background-radius : 10px;
 
-    -fx-border-color      : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-border-color      : GRADIENT_LIGHT;
     -fx-border-radius     : 10px;
 }
 
@@ -95,17 +91,17 @@ Light colors
 
 .radio-button:hover,
 .radio-button:selected {
-    -fx-text-fill : linear-gradient(to top right, #00D755, #00A3D7);
+    -fx-text-fill : GRADIENT_DARK;
 }
 
 .radio-button:selected .dot {
-    -fx-background-color  : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-background-color  : GRADIENT_LIGHT;
     -fx-background-insets : 0px;
 }
 
 .radio-button:hover .radio,
 .radio-button:selected .radio {
-    -fx-border-color  : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-border-color  : GRADIENT_LIGHT;
     -fx-border-insets : -1px;
     -fx-border-radius : 100px;
 }
@@ -116,48 +112,48 @@ Light colors
 }
 
 .spinner:focused {
-    -fx-border-color  : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-border-color  : GRADIENT_LIGHT;
     -fx-border-insets : -1px;
 }
 
 .spinner .increment-arrow-button,
 .spinner .decrement-arrow-button {
-    -fx-background-color : linear-gradient(to top right, #00D755, #00A3D7);
+    -fx-background-color : GRADIENT_DARK;
 }
 
 .spinner .increment-arrow-button:hover,
 .spinner .decrement-arrow-button:hover {
-    -fx-background-color : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-background-color : GRADIENT_LIGHT;
 }
 
 .spinner .increment-arrow-button .increment-arrow,
 .spinner .decrement-arrow-button .decrement-arrow {
-    -fx-background-color : #FFFFFF;
+    -fx-background-color : FOREGROUND;
 }
 
 .table-view:focused {
-    -fx-border-color  : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-border-color  : GRADIENT_LIGHT;
     -fx-border-insets : -1px;
 }
 
 .table-view .column-header {
-    -fx-background-color : linear-gradient(to top right, #00D755, #00A3D7);
+    -fx-background-color : GRADIENT_DARK;
 }
 
 .table-view:focused .column-header {
-    -fx-background-color : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-background-color : GRADIENT_LIGHT;
 }
 
 .table-view .column-header .arrow {
-    -fx-background-color : #FFFFFF;
+    -fx-background-color : FOREGROUND;
 }
 
 .table-view .column-header .label {
-    -fx-text-fill : #FFFFFF;
+    -fx-text-fill : FOREGROUND;
 }
 
 .table-view:focused .label {
-    -fx-text-fill : linear-gradient(to top right, #00D755, #00A3D7);
+    -fx-text-fill : GRADIENT_DARK;
 }
 
 .table-view .table-row-cell {
@@ -166,27 +162,27 @@ Light colors
 }
 
 .table-view .table-row-cell:selected {
-    -fx-background-color : linear-gradient(to top right, #00D755, #00A3D7);
+    -fx-background-color : GRADIENT_DARK;
 }
 
 .table-view:focused .table-row-cell:selected {
-    -fx-background-color : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-background-color : GRADIENT_LIGHT;
 }
 
 .titled-pane .content {
-    -fx-background-color : #FFFFFF;
+    -fx-background-color : FOREGROUND;
 }
 
 .titled-pane .title {
-    -fx-background-color : linear-gradient(to top right, #00D755, #00A3D7);
+    -fx-background-color : GRADIENT_DARK;
 }
 
 .titled-pane:focused .title {
-    -fx-background-color : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-background-color : GRADIENT_LIGHT;
 }
 
 .titled-pane .title .text {
-    -fx-fill        : #FFFFFF;
+    -fx-fill        : FOREGROUND;
 
     -fx-font-family : Oswald;
     -fx-font-size   : 16px;
@@ -196,24 +192,12 @@ Light colors
     -fx-background-color  : #000000;
     -fx-background-radius : 6px;
 
-    -fx-border-color      : linear-gradient(to top right, #00FF64, #00C2FF);
+    -fx-border-color      : GRADIENT_LIGHT;
     -fx-border-radius     : 5px;
     -fx-border-width      : 2px;
 
     -fx-font-family       : Oswald;
 
     -fx-font-size         : 16px;
-    -fx-text-fill         : #FFFFFF;
+    -fx-text-fill         : FOREGROUND;
 }
-
-/*
-Dark colors
-    green: #00d755
-     blue: #00a3d7
-    linear-gradient(to top right, #00d755, #00a3d7)
-
-Light colors
-    green: #00ff64
-     blue: #00c2ff
-    linear-gradient(to top right, #00ff64, #00c2ff)
-*/
