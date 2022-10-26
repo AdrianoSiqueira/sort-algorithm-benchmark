@@ -16,8 +16,8 @@ public class Result {
     }
 
 
-    public Class<? extends SortAlgorithm> getAlgorithm() {
-        return algorithm;
+    public String getAlgorithm() {
+        return algorithm.getSimpleName();
     }
 
     public Object[] getArray() {
