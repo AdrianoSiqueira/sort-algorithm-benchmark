@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class SortAlgorithm<T> {
 
-    public static <T> List<SortAlgorithm<T>> getSortableList() {
+    public static <T> List<SortAlgorithm<T>> getAlgorithms() {
         return Arrays.asList(new BubbleSort<>(),
                              new CocktailSort<>(),
                              new CombSort<>(),
