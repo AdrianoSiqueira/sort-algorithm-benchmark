@@ -1,4 +1,4 @@
-package app.util;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.util;
 
 import javafx.scene.control.TextFormatter;
 
