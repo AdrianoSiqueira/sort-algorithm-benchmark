@@ -5,14 +5,16 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ResourceBundle;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 class LanguageTest {
 
     @Test
     @DisplayName(value = "Load properties file")
     void fileLoads() {
-        assertThatThrownBy(() -> ResourceBundle.getBundle("com/github/adrianosiqueira/sortalgorithmbenchmark/language/Language"))
+        String baseName = "com/github/adrianosiqueira/sortalgorithmbenchmark/language/Language";
+
+        assertThatCode(() -> ResourceBundle.getBundle(baseName))
                 .doesNotThrowAnyException();
     }
 }
