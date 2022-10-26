@@ -1,6 +1,14 @@
-package app.control;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.gui.screen;
 
-import app.algorithms.SortAlgorithm;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms.SortAlgorithm;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.control.BenchmarkService;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.gui.controller.AbstractController;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.model.Result;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.model.SortOrder;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.util.ArrayFactory;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.util.IntegerStringConverter;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.util.SpinnerAmountValueFactory;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.util.TextFormatterChangeValidator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,18 +21,13 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.ToggleGroup;
-import app.model.SortOrder;
-import app.model.Test;
-import app.util.ArrayFactory;
-import app.util.SpinnerAmountValueFactory;
-import app.util.StringIntegerConverter;
-import app.util.TextFormatterChangeValidator;
 
 import java.util.List;
 
-public class AppUIController {
+public class AppUIController extends AbstractController {
 
     @FXML private Spinner<Integer> spinnerAmount;
 
@@ -40,11 +43,22 @@ public class AppUIController {
     @FXML private Label       labelMessage;
     @FXML private ProgressBar progressBar;
 
-    @FXML private TableView<Test>           table;
-    @FXML private TableColumn<Test, String> columnAlgorithm;
-    @FXML private TableColumn<Test, String> columnTime;
+    @FXML private TableView<Result>           table;
+    @FXML private TableColumn<Result, String> columnAlgorithm;
+    @FXML private TableColumn<Result, String> columnTime;
 
-    public void init() {
+
+    public AppUIController() {
+        super(
+                AppUIController.class.getResource("AppUI.fxml"),
+                AppUIController.class.getResource("AppUI.css")
+        );
+        super.controller = this;
+    }
+
+
+    @Override
+    protected void init() {
         configureMenuButton();
         configureProgressBar();
         configureRadioOrder();
@@ -73,10 +87,14 @@ public class AppUIController {
     }
 
     private void configureSpinnerAmount() {
-        spinnerAmount.getEditor().setAlignment(Pos.CENTER);
-        spinnerAmount.getEditor().setTextFormatter(new TextFormatter<>(new StringIntegerConverter(),
-                                                                       spinnerAmount.getValue(),
-                                                                       new TextFormatterChangeValidator()));
+        TextField editor = spinnerAmount.getEditor();
+        editor.setAlignment(Pos.CENTER);
+        editor.setTextFormatter(new TextFormatter<>(
+                new IntegerStringConverter(),
+                spinnerAmount.getValue(),
+                new TextFormatterChangeValidator()
+        ));
+
         spinnerAmount.setValueFactory(new SpinnerAmountValueFactory());
         spinnerAmount.getValueFactory().setValue(10);
     }
@@ -86,14 +104,14 @@ public class AppUIController {
         columnAlgorithm.setSortable(true);
         columnAlgorithm.setSortType(TableColumn.SortType.ASCENDING);
 
-        columnTime.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getTime().toString()));
+        columnTime.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCompletionTime().toString()));
     }
 
     @SuppressWarnings("unchecked")
-    private <T> void run(T[] array, List<SortAlgorithm<T>> sortAlgorithms) {
+    private <T> void run(T[] array, List<SortAlgorithm<T>> algorithms) {
         SortOrder order = (SortOrder) groupOrder.getSelectedToggle().getUserData();
 
-        BenchmarkService<T> service = new BenchmarkService<T>(sortAlgorithms, array, order.comparator);
+        BenchmarkService<T> service = new BenchmarkService<T>(algorithms, array, order.getComparator());
         service.setOnScheduled(event -> table.getItems().clear());
         service.setOnSucceeded(event -> {
             table.getItems().clear();
@@ -116,10 +134,10 @@ public class AppUIController {
 
         @Override
         public void handle(ActionEvent event) {
-            String[]                    array          = ArrayFactory.getLetterNumberShuffled(spinnerAmount.getValue());
-            List<SortAlgorithm<String>> sortAlgorithms = SortAlgorithm.getSortableList();
+            String[]                    array      = ArrayFactory.getAlphanumericShuffled(spinnerAmount.getValue());
+            List<SortAlgorithm<String>> algorithms = SortAlgorithm.getAlgorithms();
 
-            run(array, sortAlgorithms);
+            run(array, algorithms);
         }
     }
 
@@ -127,10 +145,10 @@ public class AppUIController {
 
         @Override
         public void handle(ActionEvent event) {
-            String[]                    array          = ArrayFactory.getLetterShuffled(spinnerAmount.getValue());
-            List<SortAlgorithm<String>> sortAlgorithms = SortAlgorithm.getSortableList();
+            String[]                    array      = ArrayFactory.getAlphabeticShuffled(spinnerAmount.getValue());
+            List<SortAlgorithm<String>> algorithms = SortAlgorithm.getAlgorithms();
 
-            run(array, sortAlgorithms);
+            run(array, algorithms);
         }
     }
 
@@ -138,10 +156,10 @@ public class AppUIController {
 
         @Override
         public void handle(ActionEvent event) {
-            Integer[]                    array          = ArrayFactory.getIntegerShuffled(spinnerAmount.getValue());
-            List<SortAlgorithm<Integer>> sortAlgorithms = SortAlgorithm.getSortableList();
+            Integer[]                    array      = ArrayFactory.getNumericShuffled(spinnerAmount.getValue());
+            List<SortAlgorithm<Integer>> algorithms = SortAlgorithm.getAlgorithms();
 
-            run(array, sortAlgorithms);
+            run(array, algorithms);
         }
     }
 }
