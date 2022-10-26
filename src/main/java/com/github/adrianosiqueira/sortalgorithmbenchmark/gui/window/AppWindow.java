@@ -1,10 +1,11 @@
 package com.github.adrianosiqueira.sortalgorithmbenchmark.gui.window;
 
-import com.github.adrianosiqueira.sortalgorithmbenchmark.control.AppUIController;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.gui.controller.AbstractController;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.gui.screen.AppUIController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.ResourceBundle;
@@ -12,19 +13,20 @@ import java.util.ResourceBundle;
 public class AppWindow extends Application {
 
     @Override
-    public void start(Stage stage)
-    throws Exception {
-        ResourceBundle bundle = ResourceBundle.getBundle("com/github/adrianosiqueira/sortalgorithmbenchmark/language/Language");
-        FXMLLoader     loader = new FXMLLoader(getClass().getResource("/com/github/adrianosiqueira/sortalgorithmbenchmark/gui/screen/AppUI.fxml"), bundle);
+    public void start(Stage stage) {
+        ResourceBundle resources = ResourceBundle.getBundle("com/github/adrianosiqueira/sortalgorithmbenchmark/language/Language");
 
-        Parent root = loader.load();
-        root.getStylesheets().add("/com/github/adrianosiqueira/sortalgorithmbenchmark/gui/screen/AppUI.css");
+        Pane root = loadScreen(new AppUIController(), resources);
 
-        AppUIController controller = loader.getController();
-        controller.init();
-
-        stage.setTitle(bundle.getString("Sort.Algorithm.Benchmark"));
+        stage.setTitle(resources.getString("Sort.Algorithm.Benchmark"));
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    private Pane loadScreen(AbstractController controller, ResourceBundle resources) {
+        controller.setResources(resources);
+        controller.loadFxml(GridPane.class);
+
+        return controller.getRoot();
     }
 }
