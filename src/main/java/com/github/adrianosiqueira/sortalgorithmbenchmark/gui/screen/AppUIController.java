@@ -1,7 +1,7 @@
 package com.github.adrianosiqueira.sortalgorithmbenchmark.gui.screen;
 
 import com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms.SortAlgorithm;
-import com.github.adrianosiqueira.sortalgorithmbenchmark.control.BenchmarkService;
+import com.github.adrianosiqueira.sortalgorithmbenchmark.service.BenchmarkService;
 import com.github.adrianosiqueira.sortalgorithmbenchmark.gui.controller.AbstractController;
 import com.github.adrianosiqueira.sortalgorithmbenchmark.model.Result;
 import com.github.adrianosiqueira.sortalgorithmbenchmark.model.SortOrder;
