@@ -1,4 +1,4 @@
-package com.github.adrianosiqueira.sortalgorithmbenchmark.control;
+package com.github.adrianosiqueira.sortalgorithmbenchmark.service;
 
 import com.github.adrianosiqueira.sortalgorithmbenchmark.algorithms.SortAlgorithm;
 import com.github.adrianosiqueira.sortalgorithmbenchmark.model.Result;
